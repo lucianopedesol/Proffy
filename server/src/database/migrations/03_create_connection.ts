@@ -4,7 +4,7 @@ export async function up(knex: Knex) {
     return knex.schema.createTable('connections', table => {
         table.increments('id').primary();
 
-        //ao entrem em contato, pega o id do professor
+        //ao entrarem em contato, pega o id do professor
         table.integer('user_id')
             .notNullable()
             .references('id')

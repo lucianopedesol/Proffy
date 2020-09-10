@@ -33,8 +33,8 @@ export default class ClassesController {
             .whereExists(function() {               // fazendo uma query verificando se existe um horario disponivel nessa consulta realizada
                 this.select('class_schedule.*')
                     .from('class_schedule')
-                        //       tabela           coluna   -> o "."entre elas serve para indicar que a coluna está dentro da tabela
-                    .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')                     //escreve o where inteiro do zero || é melhor usar dessa forama quando fazer um ".weheExists"
+                        //       tabela           coluna   -> O "." entre elas serve para indicar que a coluna está dentro da tabela
+                    .whereRaw('`class_schedule`.`class_id` = `classes`.`id`')    //escreve o where inteiro do zero || é melhor usar dessa forama quando fazer um ".weheExists"
                     .whereRaw('`class_schedule`.`week_day` = ??', [Number(week_day)])
                     .whereRaw('`class_schedule`.`from` <= ??', [timeinMinutes]) // filtra o horario de trabalho inicial
                     .whereRaw('`class_schedule`.`to` > ??', [timeinMinutes]) // filtra o horario de trabalho final
